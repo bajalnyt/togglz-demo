@@ -1,28 +1,20 @@
 package com.nytimes.togglzdemo.controllers;
 
+import com.nytimes.togglzdemo.features.MyFeatures;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.togglz.core.Feature;
-import org.togglz.core.manager.FeatureManager;
-import org.togglz.core.util.NamedFeature;
 
 @RestController
 public class MainController {
 
-    private final FeatureManager manager;
-    public static final Feature NEW_FEATURE = new NamedFeature("NEW_FEATURE");
-
-    public MainController(FeatureManager manager) {
-        this.manager = manager;
-    }
-
-    @GetMapping
+    @GetMapping("/")
     public String sayHello(){
-        //Set<Feature> s = FeatureContext.getFeatureManager().getFeatures();
-        if (manager.isActive(NEW_FEATURE)) {
+        if (MyFeatures.FEATURE_ONE.isActive()) {
             return "My awesome new feature!";
-        } else {
+        } else if (MyFeatures.FEATURE_TWO.isActive()) {
             return "My original feature";
+        } else {
+            return "This operation is not supported at the moment";
         }
     }
 }

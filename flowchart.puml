@@ -1,0 +1,8 @@
+@startuml
+(*)  --> "condition"
+If "check" then
+--> [True] "Behavior 1"
+else
+--> [False]"Behavior 2"
+Endif
+@enduml

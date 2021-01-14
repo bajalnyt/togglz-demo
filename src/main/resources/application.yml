@@ -1,0 +1,11 @@
+togglz:
+    console:
+        enabled: true
+        path: /togglz-console
+        secured: false
+        use-management-port: false
+    features:
+        FEATURE_ONE:
+            enabled: true
+        FEATURE_TWO:
+            enabled: false
